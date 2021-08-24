@@ -21,6 +21,9 @@ RUN cd /tmp && rm -f apache-tomcat-9.0.52.tar.gz
 
 ## Exponer puerto
 EXPOSE 8080
+#Permisos
+RUN [“chmod”, “+w”, "/usr/local/tomcat/logs”]
 
 ## Iniciar tomcat
 CMD sh /usr/local/tomcat/bin/catalina.sh start && tail -f /usr/local/tomcat/logs/catalina.out
+
