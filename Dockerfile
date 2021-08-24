@@ -1,9 +1,8 @@
 FROM alpine:latest
 LABEL Author="Jorge Riobelloa"
 
-
+USER root
 RUN apk update && apk upgrade
-
 RUN apk fetch openjdk8
 RUN apk add openjdk8
 
@@ -19,11 +18,14 @@ RUN cd /usr/local && mv apache-tomcat-9.0.52 tomcat
 ## Eliminar instaladores descargados
 RUN cd /tmp && rm -f apache-tomcat-9.0.52.tar.gz
 
+#Dar permisos a tomcat
+RUN useradd -ms /bin/bash tomcat
+RUN cd /usr/local/tomcat && chown -R tomcat .
 ## Exponer puerto
 EXPOSE 8080
 
 ## Iniciar tomcat
 #CMD sh /usr/local/tomcat/bin/catalina.sh start && tail -f /usr/local/tomcat/logs/catalina.out
-CMD /usr/local/tomcat/bin/catalina.sh start
+CMD su - tomcat -c /usr/local/tomcat/bin/catalina.sh start
 
 
