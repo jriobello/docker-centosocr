@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL Author="Jorge Riobelloa"
+LABEL Author="Jorge Riobello"
 
 USER root
 RUN apk update && apk upgrade
