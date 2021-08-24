@@ -5,9 +5,9 @@ MAINTAINER j-riobello@ejie.eus
 RUN mkdir /opt/tomcat/
 
 WORKDIR /opt/tomcat
-RUN curl -O https://downloads.apache.org/tomcat/tomcat-8/v8.5.70/bin/apache-tomcat-8.5.70.tar.gz
+RUN curl -O https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
 RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.70/* /opt/tomcat/.
+RUN mv apache-tomcat-9.0.52/* /opt/tomcat/.
 RUN yum -y install java
 RUN java -version
 
