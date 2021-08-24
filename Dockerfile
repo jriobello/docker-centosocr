@@ -18,9 +18,9 @@ RUN cd /usr/local && mv apache-tomcat-9.0.52 tomcat
 ## Eliminar instaladores descargados
 RUN cd /tmp && rm -f apache-tomcat-9.0.52.tar.gz
 
-#Dar permisos a tomcat
-RUN useradd -ms /bin/bash tomcat
-RUN cd /usr/local/tomcat && chown -R tomcat .
+#Crear usuario tomcat y dar permisos
+RUN addgroup -S tomcat && adduser -S tomcat -G tomcat
+RUN cd /usr/local/tomcat && chown -R tomcat:tomcat .
 ## Exponer puerto
 EXPOSE 8080
 
