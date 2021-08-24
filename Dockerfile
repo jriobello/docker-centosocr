@@ -26,6 +26,7 @@ EXPOSE 8080
 
 ## Iniciar tomcat
 #CMD sh /usr/local/tomcat/bin/catalina.sh start && tail -f /usr/local/tomcat/logs/catalina.out
-CMD su - tomcat -c /usr/local/tomcat/bin/catalina.sh start
+CMD [ "su", "-s", "/bin/sh", "-c", "/usr/local/tomcat/bin/catalina.sh start", "tomcat" ]
+#CMD su - tomcat -c /usr/local/tomcat/bin/catalina.sh start
 
 
