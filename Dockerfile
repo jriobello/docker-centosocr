@@ -1,19 +1,26 @@
-FROM centos
+FROM alpine:latest
+LABEL Author="Jorge Riobelloa"
+USER root
 
-MAINTAINER j-riobello@ejie.eus
+RUN apk update && apk upgrade
 
-RUN mkdir /opt/tomcat/
+RUN apk fetch openjdk8
+RUN apk add openjdk8
 
-WORKDIR /opt/tomcat
-RUN curl -O https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
-RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-9.0.52/* /opt/tomcat/.
-RUN yum -y install java
-RUN java -version
+## Descargar tomcat 8
+RUN cd /tmp && wget https://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.41/bin/apache-tomcat-8.5.41.tar.gz
 
-WORKDIR /opt/tomcat/webapps
-#RUN curl -O -L https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war
+## Descomprimir tomcat
+RUN tar -zxvf /tmp/apache-tomcat-8.5.41.tar.gz -C /usr/local
 
+## Renombrar la carpeta descomprimida a "tomcat"
+RUN cd /usr/local && mv apache-tomcat-8.5.41 tomcat
+
+## Eliminar instaladores descargados
+RUN cd /tmp && rm
+
+## Exponer puerto
 EXPOSE 8080
 
-CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+## Iniciar tomcat
+CMD sh /usr/local/tomcat/bin/catalina.sh start && tail -f /usr/local/tomcat/logs/catalina.out
