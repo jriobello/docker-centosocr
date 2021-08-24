@@ -20,7 +20,8 @@ RUN cd /tmp && rm -f apache-tomcat-9.0.52.tar.gz
 
 #Crear usuario tomcat y dar permisos
 RUN addgroup -S tomcat && adduser -S tomcat -G tomcat
-RUN cd /usr/local/tomcat && chown -R tomcat:tomcat .
+RUN cd /usr/local/tomcat && chown -R tomcat:tomcat . && chmod -R 777 .
+
 ## Exponer puerto
 EXPOSE 8080
 
