@@ -1,6 +1,6 @@
 FROM alpine:latest
 LABEL Author="Jorge Riobelloa"
-USER root
+
 
 RUN apk update && apk upgrade
 
