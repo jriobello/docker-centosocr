@@ -17,7 +17,7 @@ RUN tar -zxvf /tmp/apache-tomcat-9.0.52.tar.gz -C /usr/local
 RUN cd /usr/local && mv apache-tomcat-9.0.52 tomcat
 
 ## Eliminar instaladores descargados
-RUN cd /tmp && rm
+RUN cd /tmp && rm -f apache-tomcat-9.0.52.tar.gz
 
 ## Exponer puerto
 EXPOSE 8080
