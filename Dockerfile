@@ -7,7 +7,8 @@ RUN apk fetch openjdk8
 RUN apk add openjdk8
 
 ## Descargar tomcat 9
-RUN cd /tmp && wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
+#RUN cd /tmp && wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.52/bin/apache-tomcat-9.0.52.tar.gz
+RUN cd /tmp && wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.53/bin/apache-tomcat-9.0.53.tar.gz
 
 ## Descomprimir tomcat
 RUN tar -zxvf /tmp/apache-tomcat-9.0.52.tar.gz -C /usr/local
