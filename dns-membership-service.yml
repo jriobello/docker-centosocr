@@ -9,6 +9,6 @@
    clusterIP: None
    ports:
    - name: membership
-     port: 8888
+     port: 8080
    selector:
      app: my-tomcat-app
