@@ -26,6 +26,10 @@ RUN cd /usr/local/tomcat && chown -R tomcat:tomcat . && chmod -R 777 .
 #Configuramos cluster con servicio DNS de cloud...
 RUN cd /usr/local/tomcat/conf && mv server.xml server.xml.original
 RUN cd /usr/local/tomcat/conf && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/server.xml
+
+RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && mv web.xml web.xml.original
+RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/web.xml
+
 ## Exponer puerto
 EXPOSE 8080
 
