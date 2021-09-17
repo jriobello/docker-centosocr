@@ -139,6 +139,10 @@
       -->
       <!-- Configuramos cluster para k8s usando un servicio de DNS -->
       <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster">
+           <Manager className="org.apache.catalina.ha.session.BackupManager"
+                   expireSessionsOnShutdown="false"
+                   notifyListenersOnReplication="true"
+                   mapSendOptions="6"/>
            <Channel className="org.apache.catalina.tribes.group.GroupChannel">
              <Membership className="org.apache.catalina.tribes.membership.cloud.CloudMembershipService"
                  membershipProviderClassName="org.apache.catalina.tribes.membership.cloud.DNSMembershipProvider"/>
