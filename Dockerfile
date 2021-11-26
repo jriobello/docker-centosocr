@@ -24,12 +24,12 @@ RUN addgroup -S tomcat && adduser -S tomcat -G tomcat
 RUN cd /usr/local/tomcat && chown -R tomcat:tomcat . && chmod -R 777 .
 
 #Configuramos cluster con servicio DNS de cloud...
-RUN cd /usr/local/tomcat/conf && mv server.xml server.xml.original
-RUN cd /usr/local/tomcat/conf && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/server.xml
+#RUN cd /usr/local/tomcat/conf && mv server.xml server.xml.original
+#RUN cd /usr/local/tomcat/conf && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/server.xml
 
 #Configuracion especifica
-RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && mv web.xml web.xml.original
-RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/web.xml
+#RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && mv web.xml web.xml.original
+#RUN cd /usr/local/tomcat/webapps/examples/WEB-INF && wget https://raw.githubusercontent.com/jriobello/docker-centosocr/master/web.xml
 
 #Descargamos war
 RUN cd /usr/local/tomcat/webapps && wget https://github.com/jlumietu/open-shift-tomcat-app/releases/download/1.0.0-RC1/smvcwk.war
